@@ -45,6 +45,7 @@ h3 {
   float: right;
   border-radius: 3px;
   background-color: #e2dedb;
+  z-index: 1;
   animation: shadow-pop-br 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
 #playButton:hover {
@@ -100,15 +101,27 @@ h3 {
     width: 80%;
   }
 
-  h3,
   #timer {
     padding: 0 20px;
     font-size: 5rem;
     margin: 0 auto;
+    border: 1px solid black;
+    text-align: center;
+  }
+
+  h3 {
+    background: white;
+    display: inline-block;
+    padding: 0 20px;
+    font-size: 5rem;
+    margin: 0 auto;
+    border: 1px solid black;
+    text-align: center;
   }
   #playButton {
     padding: 8px 5px 5px 5px;
     font-size: 2em;
-    margin: 50px 50px;
+    margin: 50px -25px;
+    z-index: 1;
   }
 }

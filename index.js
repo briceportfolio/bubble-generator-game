@@ -4,6 +4,15 @@ const congrats = document.querySelector("p");
 let counter = 0;
 let countdown;
 
+window.onload = function () {
+  alert(
+    "NOTICE \n" +
+      "1) Cliquer sur start pour lancer le chronometre \n" +
+      "2) Cliquer sur les bulles pour marquer des points \n" +
+      "3) Après 60s le chronomètre s'arrète, votre score s'affiche, bravo!"
+  );
+};
+
 function startTimer(initialSeconds) {
   const timerDisplay = document.getElementById("timer");
   let seconds = initialSeconds;
