@@ -2,6 +2,7 @@ const counterDisplay = document.querySelector("h3");
 const congrats = document.querySelector("p");
 
 let counter = 0;
+console.log(counter);
 let countdown;
 
 window.onload = function () {
@@ -33,6 +34,7 @@ function restartCountdown(seconds) {
 }
 document.getElementById("playButton").addEventListener("click", function () {
   restartCountdown(60);
+  restartCounterDisplay(0);
 });
 
 const bubbleMaker = () => {

@@ -1,13 +1,17 @@
 body {
+  background: url(./bg.jpg);
   position: relative;
   overflow: hidden;
   min-height: 100vh;
   cursor: crosshair;
 }
+img {
+  object-fit: cover;
+}
 .bubble {
   position: absolute;
   border-radius: 300px;
-  background: rgba(255, 166, 0, 0.6);
+  background: rgba(255, 166, 0, 0.826);
   opacity: 0;
   animation: anim 8s forwards;
   filter: hue-rotate(0deg);
@@ -22,19 +26,27 @@ body {
   }
 }
 h3 {
+  background: transparent;
+  color: transparent;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+    0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+
+  width: 10%;
   font-size: 10rem;
   text-align: center;
-  margin-top: 20px;
-  color: rgba(128, 128, 128, 0.555);
+  margin: 20px auto;
 }
 
 #timer {
+  background: transparent;
+  color: transparent;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+    0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+  width: 10%;
   position: absolute;
   font-size: 10rem;
   left: 60%;
   top: 0%;
-
-  color: rgba(255, 0, 0, 0.522);
 }
 #playButton {
   position: absolute;
@@ -43,8 +55,13 @@ h3 {
   padding: 16px 10px 10px 10px;
   font-size: 2em;
   float: right;
-  border-radius: 3px;
-  background-color: #e2dedb;
+  background: transparent;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.584);
+  border-radius: 20px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+    0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+
   z-index: 1;
   animation: shadow-pop-br 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
@@ -57,22 +74,23 @@ h3 {
 
 @keyframes shadow-pop-br {
   0% {
-    -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e,
-      0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-    box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e,
-      0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+    -webkit-box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff,
+      0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000,
+      0 0 75px #ff0000;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+      0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
     -webkit-transform: translateX(0) translateY(0);
     transform: translateX(0) translateY(0);
   }
   100% {
-    -webkit-box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e,
-      4px 4px #3e3e3e, 5px 5px #3e3e3e, 6px 6px #3e3e3e, 7px 7px #3e3e3e,
-      8px 8px #3e3e3e;
-    box-shadow: 1px 1px #3e3e3e, 2px 2px #3e3e3e, 3px 3px #3e3e3e,
-      4px 4px #3e3e3e, 5px 5px #3e3e3e, 6px 6px #3e3e3e, 7px 7px #3e3e3e,
-      8px 8px #3e3e3e;
-    -webkit-transform: translateX(-6px) translateY(-6px);
-    transform: translateX(-6px) translateY(-6px);
+    -webkit-box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff,
+      0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000,
+      0 0 75px #ff0000;
+
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+      0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+    -webkit-transform: translateX(-4px) translateY(-4px);
+    transform: translateX(-4px) translateY(-4px);
   }
 }
 
@@ -102,26 +120,36 @@ h3 {
   }
 
   #timer {
-    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0 30px;
     font-size: 5rem;
     margin: 0 auto;
-    border: 1px solid black;
+    background: transparent;
+    color: transparent;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+      0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+
     text-align: center;
   }
 
   h3 {
-    background: white;
-    display: inline-block;
-    padding: 0 20px;
+    display: flex;
+    justify-content: center;
+    padding: 0 30px;
+    background: transparent;
+    color: transparent;
+    text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+      0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+
     font-size: 5rem;
-    margin: 0 auto;
-    border: 1px solid black;
+    margin: 0 30px;
     text-align: center;
   }
   #playButton {
     padding: 8px 5px 5px 5px;
     font-size: 2em;
-    margin: 50px -25px;
+    margin: 50px -23px;
     z-index: 1;
   }
 }
