@@ -2,15 +2,14 @@ const counterDisplay = document.querySelector("h3");
 const congrats = document.querySelector("p");
 
 let counter = 0;
-console.log(counter);
-let countdown;
-
+let countdown = 60;
+let bubbleInterval;
 window.onload = function () {
   alert(
     "NOTICE \n" +
-      "1) Cliquer sur start pour lancer le chronometre \n" +
+      "1) Cliquer sur start pour lancer le chronomètre \n" +
       "2) Cliquer sur les bulles pour marquer des points \n" +
-      "3) Après 60s le chronomètre s'arrète, votre score s'affiche, bravo!"
+      "3) Après 60s le chronomètre s'arrète, ton score s'affiche, bravo!"
   );
 };
 
@@ -23,7 +22,8 @@ function startTimer(initialSeconds) {
     timerDisplay.textContent = seconds;
     if (seconds === 0) {
       clearInterval(countdown);
-      alert("c est terminé BRAVO! ton score est de " + counter);
+      clearInterval(bubbleInterval);
+      alert("C'est terminé BRAVO! Ton score est de " + counter);
     }
   }, 1000);
 }
@@ -32,12 +32,26 @@ function restartCountdown(seconds) {
   clearInterval(countdown);
   startTimer(seconds);
 }
+const startBubbleCreation = () => {
+  bubbleInterval = setInterval(bubbleMaker, 500);
+  document
+    .getElementById("playButton")
+    .removeEventListener("click", startBubbleCreation);
+};
+document
+  .getElementById("playButton")
+  .addEventListener("click", startBubbleCreation);
+
 document.getElementById("playButton").addEventListener("click", function () {
+  counter = 0;
+  counterDisplay.textContent = counter;
   restartCountdown(60);
-  restartCounterDisplay(0);
 });
 
 const bubbleMaker = () => {
+  if (countdown <= 0) {
+    return;
+  }
   const bubble = document.createElement("span");
   bubble.classList.add("bubble");
   document.body.appendChild(bubble);
@@ -61,7 +75,5 @@ const bubbleMaker = () => {
 
   setTimeout(() => {
     bubble.remove();
-  }, 7000);
+  }, 5000);
 };
-
-setInterval(bubbleMaker, 500);
