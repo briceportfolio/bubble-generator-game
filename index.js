@@ -4,6 +4,7 @@ const congrats = document.querySelector("p");
 let counter = 0;
 let countdown = 60;
 let bubbleInterval;
+
 window.onload = function () {
   alert(
     "NOTICE \n" +
@@ -22,14 +23,15 @@ function startTimer(initialSeconds) {
     timerDisplay.textContent = seconds;
     if (seconds === 0) {
       clearInterval(countdown);
-      clearInterval(bubbleInterval);
       alert("C'est terminé BRAVO! Ton score est de " + counter);
+      stopBubbleCreation();
     }
   }, 1000);
 }
 
 function restartCountdown(seconds) {
   clearInterval(countdown);
+
   startTimer(seconds);
 }
 const startBubbleCreation = () => {
@@ -38,20 +40,19 @@ const startBubbleCreation = () => {
     .getElementById("playButton")
     .removeEventListener("click", startBubbleCreation);
 };
-document
-  .getElementById("playButton")
-  .addEventListener("click", startBubbleCreation);
+
+const stopBubbleCreation = () => {
+  clearInterval(bubbleInterval);
+};
 
 document.getElementById("playButton").addEventListener("click", function () {
   counter = 0;
   counterDisplay.textContent = counter;
   restartCountdown(60);
+  startBubbleCreation();
 });
 
 const bubbleMaker = () => {
-  if (countdown <= 0) {
-    return;
-  }
   const bubble = document.createElement("span");
   bubble.classList.add("bubble");
   document.body.appendChild(bubble);
