@@ -8,10 +8,48 @@ let bubbleInterval;
 window.onload = function () {
   alert(
     "NOTICE \n" +
-      "1) Cliquer sur start pour lancer le chronomètre \n" +
-      "2) Cliquer sur les bulles pour marquer des points \n" +
-      "3) Après 60s le chronomètre s'arrète, ton score s'affiche, bravo!"
+      "1) selectionner votre niveau (ne pas cliquer plusieurs fois)\n" +
+      "2) Cliquer sur start pour lancer le chronomètre \n" +
+      "3) Cliquer sur les bulles pour marquer des points, les bulles non cliquées en enlèvent un! \n" +
+      "4) Après 60s le chronomètre s'arrète, votre score s'affiche, bravo!"
   );
+};
+
+const setHardBackground = () => {
+  document.body.style.backgroundImage = "url('./fire-5551559_1920.jpg')";
+  document.body.style.backgroundSize = "cover";
+};
+const setEasyBackground = () => {
+  document.body.style.backgroundImage = "url('./bg.jpg')";
+  document.body.style.backgroundSize = "cover";
+};
+
+const setNightmareBackground = () => {
+  document.body.style.backgroundImage = "url('./girl-7622617_1920.jpg')";
+  document.body.style.backgroundSize = "cover";
+};
+
+const setEasyDifficulty = () => {
+  bubbleInterval = 1000;
+  setEasyBackground();
+};
+const setHardDifficulty = () => {
+  bubbleInterval = 500;
+  setHardBackground();
+};
+const setNightmareDifficulty = () => {
+  bubbleInterval = 200;
+  setNightmareBackground();
+};
+
+document.getElementById("easy").addEventListener("click", setEasyDifficulty);
+document.getElementById("hard").addEventListener("click", setHardDifficulty);
+document
+  .getElementById("nightmare")
+  .addEventListener("click", setNightmareDifficulty);
+
+const stopBubbleCreation = () => {
+  clearInterval(bubbleInterval);
 };
 
 function startTimer(initialSeconds) {
@@ -35,14 +73,10 @@ function restartCountdown(seconds) {
   startTimer(seconds);
 }
 const startBubbleCreation = () => {
-  bubbleInterval = setInterval(bubbleMaker, 500);
+  bubbleInterval = setInterval(bubbleMaker, bubbleInterval);
   document
     .getElementById("playButton")
     .removeEventListener("click", startBubbleCreation);
-};
-
-const stopBubbleCreation = () => {
-  clearInterval(bubbleInterval);
 };
 
 document.getElementById("playButton").addEventListener("click", function () {
@@ -51,6 +85,16 @@ document.getElementById("playButton").addEventListener("click", function () {
   restartCountdown(60);
   startBubbleCreation();
 });
+
+const removeBubbleAndDeductPoint = (bubble) => {
+  if (!bubble.parentElement) {
+    // Vérifier si la bulle a déjà été supprimée pour éviter de déduire un point à plusieurs reprises
+    return;
+  }
+  counter--;
+  counterDisplay.textContent = counter;
+  bubble.remove();
+};
 
 const bubbleMaker = () => {
   const bubble = document.createElement("span");
@@ -75,6 +119,6 @@ const bubbleMaker = () => {
   });
 
   setTimeout(() => {
-    bubble.remove();
+    removeBubbleAndDeductPoint(bubble);
   }, 5000);
 };

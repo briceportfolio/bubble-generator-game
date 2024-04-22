@@ -66,10 +66,10 @@ h3 {
   z-index: 1;
   animation: shadow-pop-br 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
-#playButton:hover {
+Button:hover {
   text-decoration: none;
 }
-#playButton:active {
+Button:active {
   animation: shadow-push 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
 
@@ -115,6 +115,29 @@ h3 {
     transform: translateX(0) translateY(0);
   }
 }
+
+.level {
+  margin-top: -10%;
+  margin-left: 20px;
+  width: 10%;
+  display: grid;
+  gap: 20px;
+}
+button {
+  padding: 10px 3px;
+  margin-bottom: 20px;
+  font-size: 1em;
+  float: right;
+  background: transparent;
+  font-weight: 900;
+  color: rgba(255, 0, 0, 0.584);
+  border-radius: 20px;
+  text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+    0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+
+  z-index: 1;
+  animation: shadow-pop-br 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
+}
 @media screen and (max-width: 800px) {
   body {
     width: 100%;
@@ -155,5 +178,20 @@ h3 {
     flex-direction: column;
     margin-top: 50px;
     z-index: 1;
+  }
+
+  .level {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  button {
+    margin-left: 10px;
+    font-size: 0.6rem;
+    margin-bottom: 3px;
+    padding: 5px 10px;
   }
 }
