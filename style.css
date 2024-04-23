@@ -116,17 +116,45 @@ Button:active {
   }
 }
 
-.level {
-  margin-top: -10%;
-  margin-left: 20px;
-  width: 10%;
-  display: grid;
-  gap: 20px;
+#side-bar {
+  position: absolute;
+  width: 230px;
+  height: 100%;
+  background: transparent;
+  top: 0;
+  left: -230px;
+  transition: 0.5s ease-out;
+  z-index: 4;
 }
+.toggle-btn {
+  position: absolute;
+  top: 30px;
+  left: 240px;
+  cursor: pointer;
+  height: 50px;
+  width: 50px;
+}
+.toggle-btn span {
+  width: 60px;
+  height: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
+    0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
+  display: block;
+  margin-top: 4px;
+  transition: 0.3s ease;
+}
+li {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1rem;
+}
+
 button {
   padding: 10px 3px;
   margin-bottom: 20px;
-  font-size: 1em;
   float: right;
   background: transparent;
   font-weight: 900;
@@ -134,12 +162,32 @@ button {
   border-radius: 20px;
   text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #fff, 0 0 20px #ff0000,
     0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 55px #ff0000, 0 0 75px #ff0000;
-
   z-index: 1;
   animation: shadow-pop-br 0s cubic-bezier(0.47, 0, 0.745, 0.715) both;
 }
+#side-bar.active {
+  left: 0;
+}
+.active span {
+  position: absolute;
+}
+.active span:nth-child(1) {
+  transform: rotate(45deg);
+}
+.active span:nth-child(2) {
+  opacity: 0;
+}
+.active span:nth-child(3) {
+  transform: rotate(-45deg);
+}
+/* assombrir le content quand on deplie la navbar */
+.active ~ .content {
+  opacity: 0.3;
+}
+
 @media screen and (max-width: 800px) {
   body {
+    position: relative;
     width: 100%;
   }
 
@@ -180,18 +228,20 @@ button {
     z-index: 1;
   }
 
-  .level {
-    margin-top: 40px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+  .toggle-btn {
+    position: absolute;
+    top: 14%;
+  }
+
+  #side-bar.active {
+    left: 5%;
+    top: 30%;
   }
 
   button {
     margin-left: 10px;
-    font-size: 0.6rem;
-    margin-bottom: 3px;
-    padding: 5px 10px;
+    font-size: 0.8rem;
+    margin-bottom: 20px;
+    padding: 10px 20px;
   }
 }

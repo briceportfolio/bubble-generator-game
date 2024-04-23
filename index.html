@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    />
     <title>bubble-generator</title>
     <link rel="stylesheet" href="./style.css" />
   </head>
@@ -10,10 +13,19 @@
     <h3>0</h3>
     <div id="timer">60</div>
     <button id="playButton">START</button>
-    <div class="level">
-      <button id="easy">EASY</button>
-      <button id="hard">HARD</button>
-      <button id="nightmare">NIGHTMARE</button>
+
+    <div id="side-bar">
+      <div class="toggle-btn" id="btn">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+
+      <ul>
+        <li><button id="easy">EASY</button></li>
+        <li><button id="hard">HARD</button></li>
+        <li><button id="nightmare">NIGHTMARE</button></li>
+      </ul>
     </div>
 
     <script src="index.js"></script>

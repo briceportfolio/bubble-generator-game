@@ -122,3 +122,10 @@ const bubbleMaker = () => {
     removeBubbleAndDeductPoint(bubble);
   }, 5000);
 };
+
+// **************sidebar level******************
+const sidebar = document.getElementById("side-bar");
+
+btn.addEventListener("click", () => {
+  sidebar.classList.toggle("active");
+});
